@@ -126,7 +126,7 @@ namespace Clickatell.Services.API
                 {
                     Result = response.Result,
                     Success = true,
-                    Credit = decimal.Parse(jsonBalance)
+                    Credit = decimal.Parse(jsonBalance, System.Globalization.CultureInfo.InvariantCulture)
                 };
             }
             catch (Exception exception)
