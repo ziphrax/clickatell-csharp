@@ -33,5 +33,14 @@ Date:
 Environment:
 Windows
 
+SENDERID
+==========================
+
+Added ability to send the sender id as apart of the querystring (use the "from" field)
+
+David
+
+Date: 2017-01-16
+
 
      
