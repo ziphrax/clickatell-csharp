@@ -65,7 +65,7 @@ namespace Clickatell.Services.API
             try
             {
                 //Send Request to Clickatell service with SendMessageURL, phone numbers and message
-                var response = SendRequest(Properties.HTTPSettings.Default.SendMessageURL, phoneNumbers: request.PhoneNumbers, message: request.Message);
+                var response = SendRequest(Properties.HTTPSettings.Default.SendMessageURL, phoneNumbers: request.PhoneNumbers, message: request.Message, senderID: request.SenderID);
                 
                 //Extract messages objects from string response
                 var messages = GetMessagesFromResponse(response, request.PhoneNumbers).ToArray();
@@ -296,7 +296,7 @@ namespace Clickatell.Services.API
         /// <param name="phoneNumbers"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        private string SendRequest(string function, string coveragePhoneNumber = null, string apiMessageId = null, string[] phoneNumbers = null, string message = null)
+        private string SendRequest(string function, string coveragePhoneNumber = null, string apiMessageId = null, string[] phoneNumbers = null, string message = null,string senderID = null)
         {
             //Creates Web Client
             using (var client = new WebClient())
@@ -312,6 +312,10 @@ namespace Clickatell.Services.API
                 //Add ApiMessageId if required
                 if (!string.IsNullOrWhiteSpace(apiMessageId))
                     client.QueryString.Add(Properties.HTTPSettings.Default.QueryString_ApiMsgId, apiMessageId);
+
+                //Add senderID if required
+                if (!string.IsNullOrWhiteSpace(senderID))
+                    client.QueryString.Add(Properties.HTTPSettings.Default.QueryString_SenderID, senderID);
 
                 //Add PhoneNumbers and message if required
                 if (phoneNumbers != null && phoneNumbers.Any())

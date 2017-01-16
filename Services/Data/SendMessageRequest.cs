@@ -7,6 +7,11 @@
         {
             Message = message;
         }
+        public SendMessageRequest(string sendID,string message, params string[] phoneNumbers)
+           : base(sendID,phoneNumbers)
+        {
+            Message = message;
+        }
 
         public SendMessageRequest() { }
 

@@ -139,7 +139,18 @@ namespace Clickatell.Services.Properties {
                 return ((string)(this["QueryString_ApiMsgId"]));
             }
         }
-        
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("from")]
+        public string QueryString_SenderID
+        {
+            get
+            {
+                return ((string)(this["QueryString_SenderID"]));
+            }
+        }
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("msisdn")]
